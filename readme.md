@@ -36,4 +36,6 @@
 ### Node Performance
 
 - **cluster mode**: battle-tested, reliable
+  - multiple instances of server can be setup in **one** computer
+  - one cluster manager that monitors health of individual instances (start, stop, restart etc)
 - **worker thread**: experimental, don't bother
