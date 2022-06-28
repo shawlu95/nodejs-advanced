@@ -6,6 +6,8 @@
   - libuv: access filesystem, deal with concurrency
 - in the [node](https://github.com/nodejs/node) repo, `lib` contains javascript code, `src` contains c++
 
+---
+
 ### Event Loop
 
 - **thread**: a todo list to be executed by CPU
@@ -33,10 +35,20 @@
   - any pending operating system task, e.g. HTTP server listening on a port for incoming requests
   - any long-running operation still being executed, e.g. fs module reading huge file
 
+---
+
 ### Node Performance
 
-- **cluster mode**: battle-tested, reliable
-  - multiple instances of server can be setup in **one** computer
-  - one cluster manager that monitors health of individual instances (start, stop, restart etc)
-  - rule of thumb: match number of workers to the number of CPU cores or logical cores on machines
-- **worker thread**: experimental, don't bother
+**worker thread**
+
+- experimental, don't bother
+
+**cluster mode**
+
+- battle-tested, reliable
+
+- multiple instances of server can be setup in **one** computer
+- one cluster manager that monitors health of individual instances (start, stop, restart etc)
+- rule of thumb: match number of workers to the number of CPU cores or logical cores on machines
+  - a machine with 2 cores, each handling 2 threads, has 4 logical cores
+- `pm2` is a great process manager used for production `npm install -g pm2`
