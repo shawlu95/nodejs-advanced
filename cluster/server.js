@@ -3,7 +3,10 @@ const cluster = require("cluster");
 if (cluster.isMaster) {
   console.log("isMaster: spin up and monitor workers");
 
-  // execute server.js to be executed in worker mode
+  // execute server.js to be executed in worker mode x 4
+  cluster.fork();
+  cluster.fork();
+  cluster.fork();
   cluster.fork();
 } else {
   console.log("isWorker: start express server");
@@ -23,6 +26,10 @@ if (cluster.isMaster) {
   app.get("/", (req, res) => {
     doWork(5000);
     res.send("hi");
+  });
+
+  app.get("/fast", (req, res) => {
+    res.send("instantly loaded regardless of blocking method");
   });
 
   app.listen(8080, () => {
