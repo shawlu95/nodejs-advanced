@@ -38,4 +38,5 @@
 - **cluster mode**: battle-tested, reliable
   - multiple instances of server can be setup in **one** computer
   - one cluster manager that monitors health of individual instances (start, stop, restart etc)
+  - rule of thumb: match number of workers to the number of CPU cores or logical cores on machines
 - **worker thread**: experimental, don't bother

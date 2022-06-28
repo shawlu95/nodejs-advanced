@@ -1,3 +1,7 @@
+// to make benchmark tests more straightforward
+// restrict pool-size to one
+process.env.UV_THREADPOOL_SIZE = 1;
+
 const cluster = require("cluster");
 
 if (cluster.isMaster) {
@@ -6,11 +10,10 @@ if (cluster.isMaster) {
   // execute server.js to be executed in worker mode x 4
   cluster.fork();
   cluster.fork();
-  cluster.fork();
-  cluster.fork();
 } else {
   console.log("isWorker: start express server");
   const express = require("express");
+  const { pbkdf2 } = require("crypto");
   const app = express();
 
   /**
@@ -24,8 +27,9 @@ if (cluster.isMaster) {
   }
 
   app.get("/", (req, res) => {
-    doWork(5000);
-    res.send("hi");
+    pbkdf2("a", "b", 100000, 512, "sha512", () => {
+      res.send("hi");
+    });
   });
 
   app.get("/fast", (req, res) => {
