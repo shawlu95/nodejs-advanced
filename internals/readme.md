@@ -4,3 +4,4 @@
 - [thread_2.js](./threads_2.js): reduce thread pool size to 2
 - [thread_5.js](./threads_5.js): increasing thread pool size to 5
 - [async.js](./async.js): delegating http call to os async helpers
+- [multitask.js](./multitask.js): interaction of os async modules outside of thread pool; fs read, and hash in thread pool
