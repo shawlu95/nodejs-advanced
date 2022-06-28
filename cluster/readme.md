@@ -1,0 +1,1 @@
+- nodemon doesn't work well with cluster mdoe, don't use it here

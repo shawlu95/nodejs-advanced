@@ -32,3 +32,8 @@
   - any funciton registered with `setTimeout`, `setInterval` or `setImmediate` that have not been executed
   - any pending operating system task, e.g. HTTP server listening on a port for incoming requests
   - any long-running operation still being executed, e.g. fs module reading huge file
+
+### Node Performance
+
+- **cluster mode**: battle-tested, reliable
+- **worker thread**: experimental, don't bother
